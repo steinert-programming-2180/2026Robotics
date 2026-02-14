@@ -16,18 +16,18 @@ import swervelib.parser.SwerveParser;
 import static edu.wpi.first.units.Units.Meter;
 
 public class SwerveSubsystem extends SubsystemBase {
-    final File swerveJsonDir = new File(Filesystem.getDeployDirectory(), "swerve");
 
     SwerveDrive swerveDrive;
 
     /** Creates a new ExampleSubsystem. */
     public SwerveSubsystem() {
         try {
+            File swerveJsonDir = new File(Filesystem.getDeployDirectory(), "swerve");
             // Robot Facing Towards the Red Alliance
             swerveDrive = new SwerveParser(swerveJsonDir).createSwerveDrive(Constants.MAX_SPEED,
                     new Pose2d(new Translation2d(Meter.of(1), Meter.of(4)), Rotation2d.fromDegrees(0)));
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new RuntimeException("Failed to create swerve drive: " + e.getMessage());
         }
     }
 
