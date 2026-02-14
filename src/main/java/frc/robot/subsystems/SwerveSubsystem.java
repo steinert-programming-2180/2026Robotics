@@ -7,24 +7,21 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
-import edu.wpi.first.math.util.Units;
-import edu.wpi.first.units.measure.Velocity;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import swervelib.SwerveDrive;
-import swervelib.SwerveInputStream;
 import swervelib.parser.SwerveParser;
 import static edu.wpi.first.units.Units.Meter;
 
-public class SwerveSubsytem extends SubsystemBase {
+public class SwerveSubsystem extends SubsystemBase {
     final File swerveJsonDir = new File(Filesystem.getDeployDirectory(), "swerve");
 
     SwerveDrive swerveDrive;
 
     /** Creates a new ExampleSubsystem. */
-    public SwerveSubsytem() {
+    public SwerveSubsystem() {
         try {
             // Robot Facing Towards the Red Alliance
             swerveDrive = new SwerveParser(swerveJsonDir).createSwerveDrive(Constants.MAX_SPEED,
